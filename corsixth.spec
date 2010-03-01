@@ -64,7 +64,6 @@ cd build
 make install DESTDIR=%{buildroot}
 
 mkdir %{buildroot}/%{_gamesbindir}
-##ln -s %{_gamesdatadir}/%{oname}/%{oname} %{buildroot}/%{_gamesbindir}/
 mv %{buildroot}/%{_gamesdatadir}/%{oname}/%{oname} %{buildroot}/%{_gamesbindir}/
 mkdir %{buildroot}/%{_gamesdatadir}/%{oname}/th-files/
 
