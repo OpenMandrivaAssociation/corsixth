@@ -37,17 +37,17 @@ Requires:	libSDL_mixer1.2_0
 %description
 This project aims to reimplement the game engine of Theme Hospital, and 
 be able to load the original game data files. This means that you will 
-need a purchased copy of Theme Hospital, or a copy of the demo, in order 
-to use CorsixTH. Put those files found in directory which contains a file 
-called HOSPITAL.EXE, sub-directories called DATA, LEVELS, and QDATA, and so 
-on under /usr/share/games/CorsixTH/th-files directory. After most of the 
+need a purchased copy of Theme Hospital in order to use CorsixTH. Put 
+those files found in directory which contains a file called HOSPITAL.EXE, 
+sub-directories called DATA, LEVELS, and QDATA, and so on under 
+'/usr/share/games/CorsixTH/th-files' directory. After most of the 
 original engine has been reimplemented in open source code, the project will 
 serve as a base from which extensions to the original game can be made just 
 like OpenTTD. 
 
-!! Please be aware that this is BETA release so many features are still missing 
-or WIP. Game configuration can be adjusted by changing values in 
-/usr/share/games/CorsixTH/config.txt file !! 
+!! Please, please be aware that this is BETA release so many features are 
+still missing or work in progress. Game configuration can be adjusted by 
+changing values in /usr/share/games/CorsixTH/config.txt file !! 
 
 ##### setup, build, install #####
 %prep
