@@ -1,7 +1,7 @@
 ###### Predefinitions #####
 %define name		corsixth
 %define oname		CorsixTH
-%define revision	493
+%define revision	501
 %define version		0.1
 %define release		%mkrel 0.svn%{revision}.1
 
