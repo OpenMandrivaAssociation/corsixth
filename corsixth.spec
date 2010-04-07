@@ -9,7 +9,7 @@ Summary:	Open source clone of Theme Hospital
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://corsix-th.googlecode.com/files/CorsixTH-Beta2-Source.tar.gz
+Source0:	http://corsix-th.googlecode.com/files/%{oname}-Beta2-Source.tar.gz
 Source1:	config.txt
 Source2:	%{oname}-16.png
 Source3:	%{oname}-32.png
@@ -53,15 +53,16 @@ changing values in /usr/share/games/CorsixTH/config.txt file !!
 ##### setup, build, install #####
 %prep
 %setup -q -c
-cp %{SOURCE1} %{oname}/
+cp %{SOURCE1} CorsixTH-Beta2-Source/%{oname}/
 
 %build
+cd CorsixTH-Beta2-Source/
 %cmake .. -DCMAKE_INSTALL_PREFIX=%{_gamesdatadir}
 %make
 
 %install
 rm -rf %{buildroot}
-cd build
+cd CorsixTH-Beta2-Source/build
 make install DESTDIR=%{buildroot}
 
 mkdir %{buildroot}/%{_gamesbindir}
@@ -72,6 +73,7 @@ mkdir -p %{buildroot}/%{_iconsdir}/hicolor/{16x16,32x32,64x64,scalable}/apps
 install -m 644 %{SOURCE2} %buildroot%_iconsdir/hicolor/16x16/apps/%{oname}.png
 install -m 644 %{SOURCE3} %buildroot%_iconsdir/hicolor/32x32/apps/%{oname}.png
 install -m 644 %{SOURCE4} %buildroot%_iconsdir/hicolor/64x64/apps/%{oname}.png
+install -m 644 %{SOURCE1} %{buildroot}/%{_gamesdatadir}/%{oname}/config.txt
 
 mkdir -p %{buildroot}/%{_datadir}/applications
 cat > %{buildroot}/%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -100,6 +102,7 @@ rm -rf %{buildroot}
 %{_gamesbindir}/%{oname}
 %dir %{_gamesdatadir}/%{oname}
 %{_gamesdatadir}/%{oname}/*
+%doc %{_gamesdatadir}/%{oname}/LICENSE.txt
 %_iconsdir/hicolor/*/apps/%{oname}.*
 %{_datadir}/applications/mandriva-%{name}.desktop
 
