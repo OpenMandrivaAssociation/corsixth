@@ -1,16 +1,15 @@
 ###### Predefinitions #####
 %define name		corsixth
 %define oname		CorsixTH
-%define revision	529
-%define version		0.1
-%define release		%mkrel 0.svn%{revision}.1
+%define version		0.2
+%define release		%mkrel 1
 
 ##### Header #####
 Summary:	Open source clone of Theme Hospital
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{name}-%{version}-svn%{revision}.tar.lzma
+Source0:	http://corsix-th.googlecode.com/files/CorsixTH-Beta2-Source.tar.gz
 Source1:	config.txt
 Source2:	%{oname}-16.png
 Source3:	%{oname}-32.png
