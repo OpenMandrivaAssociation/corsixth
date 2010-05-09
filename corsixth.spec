@@ -2,7 +2,7 @@
 %define name		corsixth
 %define oname		CorsixTH
 %define version		0.2
-%define release		%mkrel 2
+%define release		%mkrel 3
 
 ##### Header #####
 Summary:	Open source clone of Theme Hospital
@@ -10,6 +10,8 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	http://corsix-th.googlecode.com/files/%{oname}-Beta2-Source.tar.gz
+# (eandry) fix lowercase/uppercase issue for data files
+Patch0:		issue104.patch
 Source1:	config.txt
 Source2:	%{oname}-16.png
 Source3:	%{oname}-32.png
@@ -54,6 +56,13 @@ changing values in /usr/share/games/CorsixTH/config.txt file !!
 %prep
 %setup -q -c
 cp %{SOURCE1} CorsixTH-Beta2-Source/%{oname}/
+
+# strip away annoying ^M
+find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
+find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
+
+cd %{oname}-Beta2-Source
+%patch0 -p0
 
 %build
 cd %{oname}-Beta2-Source/
