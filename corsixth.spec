@@ -2,7 +2,7 @@
 %define name		corsixth
 %define oname		CorsixTH
 %define version		0.2
-%define release		%mkrel 1
+%define release		%mkrel 2
 
 ##### Header #####
 Summary:	Open source clone of Theme Hospital
@@ -56,17 +56,21 @@ changing values in /usr/share/games/CorsixTH/config.txt file !!
 cp %{SOURCE1} CorsixTH-Beta2-Source/%{oname}/
 
 %build
-cd CorsixTH-Beta2-Source/
-%cmake .. -DCMAKE_INSTALL_PREFIX=%{_gamesdatadir}
+cd %{oname}-Beta2-Source/
+%cmake .. -DCMAKE_INSTALL_PREFIX=%{_gamesdatadir}/
 %make
 
 %install
 rm -rf %{buildroot}
 cd CorsixTH-Beta2-Source/build
-make install DESTDIR=%{buildroot}
+make install DESTDIR=%{buildroot}/
 
 mkdir %{buildroot}/%{_gamesbindir}
-mv %{buildroot}/%{_gamesdatadir}/%{oname}/%{oname} %{buildroot}/%{_gamesbindir}/
+cat > %{buildroot}/%{_gamesbindir}/%{oname} << EOF
+#!/bin/bash
+%{_gamesdatadir}/%{oname}/%{oname}
+EOF
+
 mkdir %{buildroot}/%{_gamesdatadir}/%{oname}/th-files/
 
 mkdir -p %{buildroot}/%{_iconsdir}/hicolor/{16x16,32x32,64x64,scalable}/apps
@@ -99,7 +103,7 @@ rm -rf %{buildroot}
 ##### Files #####
 %files
 %defattr(-,root,root)
-%{_gamesbindir}/%{oname}
+%attr(755, root, root) %{_gamesbindir}/%{oname}
 %dir %{_gamesdatadir}/%{oname}
 %{_gamesdatadir}/%{oname}/*
 %doc %{_gamesdatadir}/%{oname}/LICENSE.txt
