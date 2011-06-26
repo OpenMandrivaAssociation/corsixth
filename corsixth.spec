@@ -1,7 +1,8 @@
 ###### Predefinitions #####
 %define name		corsixth
 %define oname		CorsixTH
-%define version		0.6
+%define version		0.7
+%define beta		Beta7
 %define release		%mkrel 1
 
 ##### Header #####
@@ -9,7 +10,7 @@ Summary:	Open source clone of Theme Hospital
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://corsix-th.googlecode.com/files/%{oname}-Beta6-Source.tar.gz
+Source0:	http://corsix-th.googlecode.com/files/%{oname}-%{beta}-Source.tar.gz
 Source2:	%{oname}-16.png
 Source3:	%{oname}-32.png
 Source4:	%{oname}-64.png
@@ -50,16 +51,16 @@ changing values in /usr/share/games/CorsixTH/config.txt file !!
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 
-cd %{oname}-Beta6-Source
+cd %{oname}-%{beta}-Source
 
 %build
-cd %{oname}-Beta6-Source/
+cd %{oname}-%{beta}-Source/
 %cmake .. -DCMAKE_INSTALL_PREFIX=%{_gamesdatadir}/
 %make
 
 %install
 rm -rf %{buildroot}
-cd CorsixTH-Beta6-Source/build
+cd CorsixTH-%{beta}-Source/build
 make install DESTDIR=%{buildroot}/
 
 mkdir %{buildroot}/%{_gamesbindir}
