@@ -1,8 +1,8 @@
 ###### Predefinitions #####
 %define name		corsixth
 %define oname		CorsixTH
-%define version		0.7
-%define beta		Beta7
+%define version		0.8
+%define beta		Beta8
 %define release		%mkrel 1
 
 ##### Header #####
@@ -51,16 +51,14 @@ changing values in /usr/share/games/CorsixTH/config.txt file !!
 find . -type f|xargs file|grep 'CRLF'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 
-cd %{oname}-%{beta}-Source
-
 %build
-cd %{oname}-%{beta}-Source/
+cd %{oname}
 %cmake .. -DCMAKE_INSTALL_PREFIX=%{_gamesdatadir}/
 %make
 
 %install
 rm -rf %{buildroot}
-cd CorsixTH-%{beta}-Source/build
+cd %{oname}/build
 make install DESTDIR=%{buildroot}/
 
 mkdir %{buildroot}/%{_gamesbindir}
@@ -72,9 +70,9 @@ EOF
 mkdir %{buildroot}/%{_gamesdatadir}/%{oname}/th-files/
 
 mkdir -p %{buildroot}/%{_iconsdir}/hicolor/{16x16,32x32,64x64,scalable}/apps
-install -m 644 %{SOURCE2} %buildroot%_iconsdir/hicolor/16x16/apps/%{oname}.png
-install -m 644 %{SOURCE3} %buildroot%_iconsdir/hicolor/32x32/apps/%{oname}.png
-install -m 644 %{SOURCE4} %buildroot%_iconsdir/hicolor/64x64/apps/%{oname}.png
+install -m 644 %{SOURCE2} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{oname}.png
+install -m 644 %{SOURCE3} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{oname}.png
+install -m 644 %{SOURCE4} %{buildroot}%{_iconsdir}/hicolor/64x64/apps/%{oname}.png
 
 mkdir -p %{buildroot}/%{_datadir}/applications
 cat > %{buildroot}/%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -99,6 +97,6 @@ rm -rf %{buildroot}
 %dir %{_gamesdatadir}/%{oname}
 %{_gamesdatadir}/%{oname}/*
 %doc %{_gamesdatadir}/%{oname}/LICENSE.txt
-%_iconsdir/hicolor/*/apps/%{oname}.*
+%{_iconsdir}/hicolor/*/apps/%{oname}.*
 %{_datadir}/applications/mandriva-%{name}.desktop
 
