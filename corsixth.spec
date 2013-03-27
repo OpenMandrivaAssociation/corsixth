@@ -2,18 +2,19 @@
 
 Summary:	Open source clone of Theme Hospital
 Name:		corsixth
-Version:	0.11
+Version:	0.20
 Release:	1
 License:	MIT
 Group:		Games/Strategy
 URL:		http://code.google.com/p/corsix-th/
 Source0:	http://corsix-th.googlecode.com/files/%{oname}-%{version}-Source.tar.gz
 BuildRequires:	cmake
-BuildRequires:	pkgconfig(sdl)
-BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	icoutils
+BuildRequires:	ffmpeg-devel
 BuildRequires:	lua5.1-devel
 BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	icoutils
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_mixer)
 Requires:	TiMidity++
 
 %description
