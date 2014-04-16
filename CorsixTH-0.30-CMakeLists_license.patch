@@ -1,0 +1,9 @@
+--- a/CorsixTH/CMakeLists.txt	2013-09-09 00:50:04.536111710 +0200
++++ b/CorsixTH/CMakeLists.txt	2013-09-09 00:50:26.353112228 +0200
+@@ -228,5 +228,5 @@ ELSE()
+   install(DIRECTORY Bitmap DESTINATION CorsixTH
+         FILES_MATCHING REGEX ".*\\.(tab|pal|dat|png)$"
+         PATTERN "*.svn" EXCLUDE)
+-  install(FILES CorsixTH.lua LICENSE.txt CorsixTH.ico DESTINATION CorsixTH )
++  install(FILES CorsixTH.lua ../LICENSE CorsixTH.ico DESTINATION CorsixTH )
+ ENDIF()
