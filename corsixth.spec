@@ -3,7 +3,7 @@
 Summary:	Open source clone of Theme Hospital
 Name:		corsixth
 Version:	0.30
-Release:	1
+Release:	2
 License:	MIT
 Group:		Games/Strategy
 Url:		http://code.google.com/p/corsix-th/
