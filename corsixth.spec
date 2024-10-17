@@ -6,7 +6,7 @@ Version:	0.30
 Release:	2
 License:	MIT
 Group:		Games/Strategy
-Url:		http://code.google.com/p/corsix-th/
+Url:		https://code.google.com/p/corsix-th/
 Source0:	http://corsix-th.googlecode.com/files/%{oname}-%{version}.tar.gz
 Patch0:		CorsixTH-0.30-CMakeLists_license.patch
 BuildRequires:	cmake
